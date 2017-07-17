@@ -1,0 +1,8 @@
+pipelines:
+  default:
+    - step:
+        script:
+          - npm install serverless -g
+          - mvn clean package
+          - cp -r .aws $HOME
+          - sls deploy
