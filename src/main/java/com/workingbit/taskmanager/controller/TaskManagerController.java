@@ -6,6 +6,7 @@ import com.workingbit.taskmanager.common.StringMap;
 import com.workingbit.taskmanager.domain.Task;
 import com.workingbit.taskmanager.service.TaskManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,8 +21,8 @@ public class TaskManagerController {
     @Autowired
     private TaskManagerService taskManagerService;
 
-//    @Value("${spring.datasource.url}")
-//    private String datasource;
+    @Value("${spring.datasource.url}")
+    private String datasource;
 
     @PostMapping(AppConstants.TASKS_PATH)
     public StringMap addTask(@RequestBody Task task) {
@@ -57,7 +58,7 @@ public class TaskManagerController {
 
     @GetMapping(AppConstants.TASKS_PATH)
     public StringMap find() {
-//        System.out.println("DATASOURCE: " + datasource);
+        System.out.println("DATASOURCE: " + datasource);
         try {
             List<Task> tasks = taskManagerService.find();
             System.out.println(tasks);
