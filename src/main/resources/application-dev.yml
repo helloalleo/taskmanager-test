@@ -1,17 +1,6 @@
 #
 # Development profile with templates and static resources reloading: http://blog.codeleak.pl/2016/12/thymeleaf-reload-templates-and-static-resources.html
 #
-spring:
-  datasource:
-    url: jdbc:mysql://taskmanager.cgl3zg2bvivn.eu-central-1.rds.amazonaws.com:3306/taskmanager
-    driver-class-name: com.mysql.jdbc.Driver
-    username: taskmanager
-    password: taskmanager
-
-  jpa.show-sql: true
-  jpa.generate-ddl: true
-  jpa.hibernate.ddl-auto: update
-
 logging.level:
   org.hibernate:
     SQLQuery: trace

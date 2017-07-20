@@ -20,12 +20,10 @@ public class TaskManagerController {
     @Autowired
     private TaskManagerService taskManagerService;
 
-//    @Value("${spring.datasource.url}")
-//    private String datasource;
-
     @PostMapping(AppConstants.TASKS_PATH)
     public StringMap addTask(@RequestBody Task task) {
         try {
+            task.setId(String.valueOf(task.hashCode()));
             taskManagerService.save(task);
             return StringMap.StringMapBuilder.getInstance()
                     .put(EnumResponse.ok.name(), true)

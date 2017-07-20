@@ -1,31 +1,34 @@
 package com.workingbit.taskmanager.domain;
 
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 import lombok.Data;
-import org.hibernate.validator.constraints.Email;
 
-import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Aleksey Popryaduhin on 09:39 15/07/2017.
  */
-@Entity
+@DynamoDBTable(tableName = "Task")
 @Data
 public class Task {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @DynamoDBHashKey(attributeName = "Id")
+    private String id;
 
+    @DynamoDBAttribute(attributeName = "Username")
     private String username;
 
+    @DynamoDBAttribute(attributeName = "Email")
     private String email;
 
+    @DynamoDBAttribute(attributeName = "Content")
     private String content;
 
+    @DynamoDBAttribute(attributeName = "Completed")
     private boolean completed;
 
-    @ElementCollection
-    @Column(columnDefinition="TEXT")
-    private List<String> pictures;
+    @DynamoDBAttribute(attributeName = "Pictures")
+    private Set<String> pictures;
 }
