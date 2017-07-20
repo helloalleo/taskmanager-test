@@ -6,6 +6,7 @@ import com.workingbit.taskmanager.common.StringMap;
 import com.workingbit.taskmanager.domain.Task;
 import com.workingbit.taskmanager.service.TaskManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
